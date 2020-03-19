@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/yellow" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="344dp"
+            android:layout_height="279dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="398dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="54dp"
+            android:background="#00CFB8D8"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:text="USERNAME" />
+
+                <EditText
+                    android:id="@+id/edittxt_username"
+                    android:layout_width="235dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="PASSWORD" />
+
+                <EditText
+                    android:id="@+id/edittxt_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#A1C7E4"
+                    android:text="LOG IN" />
+            </LinearLayout>
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <!--            <Button-->
+<!--                android:id="@+id/button_fb"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="62dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#285E86"-->
+<!--                android:text="FACE BOOK" />-->
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
