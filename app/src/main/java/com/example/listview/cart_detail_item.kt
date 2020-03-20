@@ -1,6 +1,7 @@
 package com.example.listview
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -86,27 +87,37 @@ class cart_detail_item: Fragment() {
         val mCartRef = mRootRef.child("cart")
         val button_delete : TextView = view.findViewById(R.id.button_delete)
         button_delete.setOnClickListener {
-            //setValue() เป็นการ write หรือ update ข้อมูล ไปยัง path ที่เราอ้างถึงได้ เช่น users/<user-id>/<username>
 
-            //get user data
-            user = FirebaseAuth.getInstance().currentUser
-            if(user != null){
-                Log.d("username", user!!.uid)
-                Log.d("key", key)
-                //login with facebook
-                var mUserIdRef = mCartRef.child(user!!.uid).child(key)//go to cart of current user _
-                mUserIdRef.setValue(null)
-                val fm: FragmentManager = activity!!.getSupportFragmentManager()
-                fm.popBackStack("fragment_cart_item_selected", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                Toast.makeText(context, "Delete Success", Toast.LENGTH_SHORT).show()
-            }else{
-                //login with local
-                var mUserIdRef = mCartRef.child("s60160335").child(key)//go to cart of current user
-                mUserIdRef.setValue(null)
-                val fm: FragmentManager = activity!!.getSupportFragmentManager()
-                fm.popBackStack("fragment_cart_item_selected", FragmentManager.POP_BACK_STACK_INCLUSIVE)
-                Toast.makeText(context, "Delete Success", Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this.context)
+            builder.setMessage("Please confirm to delete")
+
+            builder.setPositiveButton("Yes") { dialog, id ->
+                //get user data
+                user = FirebaseAuth.getInstance().currentUser
+                if(user != null){
+                    Log.d("username", user!!.uid)
+                    Log.d("key", key)
+                    //login with facebook
+                    var mUserIdRef = mCartRef.child(user!!.uid).child(key)//go to cart of current user _
+                    mUserIdRef.setValue(null)
+                    val fm: FragmentManager = activity!!.getSupportFragmentManager()
+                    fm.popBackStack("fragment_cart_item_selected", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    Toast.makeText(context, "Delete Success", Toast.LENGTH_SHORT).show()
+                }else{
+                    //login with local
+                    var mUserIdRef = mCartRef.child("s60160335").child(key)//go to cart of current user
+                    mUserIdRef.setValue(null)
+                    val fm: FragmentManager = activity!!.getSupportFragmentManager()
+                    fm.popBackStack("fragment_cart_item_selected", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    Toast.makeText(context, "Delete Success", Toast.LENGTH_SHORT).show()
+                }
             }
+
+            builder.setNegativeButton("No") { dialog, which ->
+                //dialog.dismiss();
+            }
+            builder.show()
+
         }
 
         // Inflate the layout for this fragment

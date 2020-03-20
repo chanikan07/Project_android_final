@@ -41,7 +41,6 @@ class Cart_list : Fragment() {
             uid = "s60160335"
         }
 
-
         /*--------get data form database realtime---------*/
         val mRootRef = FirebaseDatabase.getInstance().reference
         val mcCartRef = mRootRef.child("cart").child(uid!!)//use uid as folder name in database to path
